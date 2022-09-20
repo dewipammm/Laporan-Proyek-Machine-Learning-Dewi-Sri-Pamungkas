@@ -50,7 +50,7 @@ Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris
 
 Data Loading sebagai berikut : 
 
-<https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=QPlA-z7Pdh0t&line=1&uniqifier=1>
+![image](https://user-images.githubusercontent.com/110523200/191248931-a6ac9c5f-9e47-41dd-b65d-52bf3eedeab3.png)
 
 Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memiliki 8807 entries. Dapat disimpulkan bahwa nilai rating bermacam-macam, yaitu: 
 
@@ -58,25 +58,12 @@ Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memili
 * TV-MA : Rating yang menunjukkan bahwa sebuah program ditujukan untuk orang dewasa
 * R : Anak-anak berusia di bawah 17 tahun membutuhkan pendampingan orangtua atau orang dewasa saat menyaksikannya
 * TV-Y7 : Untuk kalangan berusia 7-16 tahun
-* PG : Parental Guidance Suggested yaitu perlu bimbingan orangtua
+* PG : *Parental Guidance Suggested* yaitu perlu bimbingan orangtua
 * TV-14 : untuk kalangan berusia 14 keatas jika dibawah 14 tahun maka dalam pengawasan ketat orang tua
 
 Pada tahap ini, saya membersihkan data NaN. Jumlah NaN 4307 dari NaN yg ditemukan berdasarkan kolom :
 
-jumlah NaN tiap Column
-show_id            0
-type               0
-title              0
-director        2634
-cast             825
-country          831
-date_added        10
-release_year       0
-rating             4
-duration           3
-listed_in          0
-description        0
-dtype: int64
+![image](https://user-images.githubusercontent.com/110523200/191249055-109fc2cc-da2c-4d76-81e3-cb2c005cacc3.png)
 
 Ini adalah informasi yang didapatkan dari hasil eksplorasi pada variabel netflix.
 
@@ -102,33 +89,33 @@ Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem re
 
 * Saya menggunakan TF-IDF Vectorizer untuk menemukan representasi fitur penting dari setiap rating netflix. Fungsi yang saya gunakan adalah tfidfvectorizer() dari library sklearn. Berikut sebagian outputnya :
 
-<https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=fXLVQ_ZYx5S8&line=1&uniqifier=1>
+![image](https://user-images.githubusercontent.com/110523200/191249618-9f749a40-a1c5-435f-a420-9029f8271819.png)
 
-* Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil binary. Berikut outputnya :
+* Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil *binary*. Berikut outputnya :
         
-(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=Nw8yKJjqzJxc&line=1&uniqifier=1)
+![image](https://user-images.githubusercontent.com/110523200/191249781-42ac3757-1b4b-4f38-a188-311b1968cef6.png)
 
-* Selanjutnya saya menggunakan argpartition untuk mengambil sejumlah nilai k tertinggi dari similarity data kemudian mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah.
+* Selanjutnya saya menggunakan *argpartition* untuk mengambil sejumlah nilai k tertinggi dari *similarity* data kemudian mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah.
 
 Kemudian saya menguji akurasi dari sistem rekomendasi ini untuk menemukan rekomendasi netflix yang mirip dengan judul "A Cinderella Story". Berikut adalah detail informasi judul netflix "A Cinderella Story" :
 
-(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=vdUjh7bZ5vKi&line=1&uniqifier=1)
+![image](https://user-images.githubusercontent.com/110523200/191250230-66c3cc87-4eba-47f0-a7e0-203b194813df.png)
 
 Berdasarkan output di atas, dapat dilihat bahwa netflix dengan judul "A Cinderella Story" memiliki rating "PG" dengan negara asal United States, Canada. Rekomendasi yang diharapkan adalah judul netflix dengan rating yang serupa.
 
 Berikut adalah rekomendasi yang diberikan oleh model yang telah dibuat :
 
-(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=4CGhQO0_6Edu&line=1&uniqifier=1)
+![image](https://user-images.githubusercontent.com/110523200/191250106-17da077c-f6cf-417b-abf2-024120ef0c88.png)
 
 Model berhasil memberikan rekomendasi 10 judul netflix dengan rating yang serupa.
 
 ### Evaluation
 
-Pada tahap ini, saya menggunakan metriks precision. Precision Adalah sebuah metrics yang digunakan untuk mengukur berapa jumlah prediksi benar yang telah dibuat. Kelebihannya yaitu sangat baik untuk klasifikasi, dokumen yang dipilih secara acak dari kumpulan dokumen yang diambil adalah relevan, precision bagus untuk kasus di mana kelasnya seimbang. Namun kekurangan dari metrik precision ini yaitu tidak baik untuk data yang Imbalance dan hanya hasil teratas yang dikembalikan oleh sistem.
+Pada tahap ini, saya menggunakan metriks *precision*. *Precision* adalah sebuah metrics yang digunakan untuk mengukur berapa jumlah prediksi benar yang telah dibuat. Kelebihannya yaitu sangat baik untuk klasifikasi, dokumen yang dipilih secara acak dari kumpulan dokumen yang diambil adalah relevan, *precision* bagus untuk kasus di mana kelasnya seimbang. Namun kekurangan dari metrik *precision* ini yaitu tidak baik untuk data yang Imbalance dan hanya hasil teratas yang dikembalikan oleh sistem.
 
 Untuk mengevaluasi model adalah menampung terlebih dahulu data netflix yang akan menjadi data uji coba, dalam kasus ini saya mencoba untuk menampung data netflix yang mempunyai judul "A Cinderella Story" dan saya tampung pada variabel feature. Lalu selanjutnya saya menampung rating yang ada pada data uji coba untuk selanjutnya dipakai untuk evaluasi model.
 
-Dan langkah terakhir yang saya lakukan adalah membuat perulangan berdasarkan rating pada data uji coba dan melakukan implementasi dari formula precision. Berikut adalah hasil keluaran dari implementasi formula precision : 
+Dan langkah terakhir yang saya lakukan adalah membuat perulangan berdasarkan rating pada data uji coba dan melakukan implementasi dari formula *precision*. Berikut adalah hasil keluaran dari implementasi formula precision : 
 
 ![image](https://user-images.githubusercontent.com/110523200/191246646-4c9b5285-0a2c-4fc7-a268-50e4a48f4618.png)
 
@@ -136,4 +123,4 @@ Output tersebut memberikan hasil yang cukup baik dan memiliki akurasi sebesar 10
  
 ### Kesimpulan
 
-Saya sudah cukup paham bagaimana cara menyelesaikan proyek ini. Namun masih banyak pula hal yang perlu saya perbaiki dan pelajari agar saya paham sepenuhnya.
+Saya belum sepenuhnya paham bagaimana cara menyelesaikan proyek sistem rekomendasi secara baik dan benar, namun sedikit banyaknya saya mengerti apa yang harus saya lakukan untuk mengerjakan proyek ini. Dan masih banyak pula hal yang perlu saya perbaiki dan pelajari agar saya paham sepenuhnya.
