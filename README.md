@@ -145,7 +145,13 @@ array ([
 
 Kemudian saya menguji akurasi dari sistem rekomendasi ini untuk menemukan rekomendasi netflix yang mirip dengan judul "A Cinderella Story". Berikut adalah detail informasi judul netflix "A Cinderella Story" :
 
-![image](https://user-images.githubusercontent.com/110523200/191250230-66c3cc87-4eba-47f0-a7e0-203b194813df.png)
+|     | show_id |  type  |       title        |  director   |                       cast                         | 
+|-----|---------|--------|--------------------|-------------|----------------------------------------------------|
+| 127 |  s128   |  Movie | A Cinderella Story | Mark Rosman | Hilary Duff, Chad Michael Murray, Jennifer Coo...  | 
+ 
+|        country        |  date_added  | release_year | rating | duration |             listed_in              |                   description                     |
+|-----------------------|--------------|--------------|--------|----------|------------------------------------|---------------------------------------------------|
+| United States, Canada | Sept 1, 2021 |     2004     |   PG   |  95 min  | Children & Family Movies, Comedies | Teen Sam meets the boy of her dreams at a danc... |
 
 Berdasarkan output di atas, dapat dilihat bahwa netflix dengan judul "A Cinderella Story" memiliki rating "PG" dengan negara asal United States, Canada. Rekomendasi yang diharapkan adalah judul netflix dengan rating yang serupa.
 
