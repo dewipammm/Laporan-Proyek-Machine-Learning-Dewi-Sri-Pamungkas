@@ -181,10 +181,10 @@ Untuk mengevaluasi model adalah menampung terlebih dahulu data netflix yang akan
 
 Dan langkah terakhir yang saya lakukan adalah membuat perulangan berdasarkan rating pada data uji coba dan melakukan implementasi dari formula *precision*. Berikut adalah hasil keluaran dari implementasi formula precision : 
 
-![image](https://user-images.githubusercontent.com/110523200/191246646-4c9b5285-0a2c-4fc7-a268-50e4a48f4618.png)
+PG: 100.0
 
 Output tersebut memberikan hasil yang cukup baik dan memiliki akurasi sebesar 100% sehingga dari sini saya bisa mengetahui bahwa model yang saya kembangkan berjalan sesuai yang diharapkan. 
  
 ### Kesimpulan
 
-Saya belum sepenuhnya paham bagaimana cara menyelesaikan proyek sistem rekomendasi secara baik dan benar, namun sedikit banyaknya saya mengerti apa yang harus saya lakukan untuk mengerjakan proyek ini. Dan masih banyak pula hal yang perlu saya perbaiki dan pelajari agar saya paham sepenuhnya.
+Proyek diatas sudah memenuhi goals yang diinginkan sesuai dengan Problem Statements yang dibahas. Sedikit banyaknya saya mengerti apa yang harus saya lakukan untuk mengerjakan proyek ini. Namun masih banyak pula hal yang perlu saya perbaiki dan pelajari agar hasil dari proyek sempurna.
