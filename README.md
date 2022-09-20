@@ -157,7 +157,19 @@ Berdasarkan output di atas, dapat dilihat bahwa netflix dengan judul "A Cinderel
 
 Berikut adalah rekomendasi yang diberikan oleh model yang telah dibuat :
 
-![image](https://user-images.githubusercontent.com/110523200/191250106-17da077c-f6cf-417b-abf2-024120ef0c88.png)
+|   |        Netflix Title        | Rating |	  	         Country                      |
+|---|-----------------------------|--------|--------------------------------------------------|
+| 0 | Safe House                  |    R   | South Africa, United States, Japan               |
+| 1 | Training Day                |    R   | United States                                    |
+| 2 | Kate	                  |    R   | United States                                    |
+| 3 | In the Cut                  |    R   | United Kingdom, Australia, France, United States |
+| 4 | Blade Runner: The Final Cut |    R   | United States                                    |
+| 5 | Chappie                     |    R   | South Africa, United States                      |
+| 6 | Cliffhanger	          |    R   | United States, Italy, France, Japan              |
+| 7 | Cold Mountain	          |    R   | United States, Italy, Romania, United Kingdom    |
+| 8 | Do the Right Thing          |    R   | United States                                    |
+| 9 | Extraction	          |    R   | United States, United Kingdom, Canada            |
+|10 | House Party                 |    R   | United States                                    |
 
 Model berhasil memberikan rekomendasi 10 judul netflix dengan rating yang serupa.
 
