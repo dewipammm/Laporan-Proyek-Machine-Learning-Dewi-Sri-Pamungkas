@@ -8,8 +8,6 @@ Domain yang saya pilih adalah dataset dari kaggle yang berjudul Netflix Movies a
 
 Netflix adalah salah satu platform streaming media dan video paling populer. Mereka memiliki lebih dari 8000 film atau acara tv yang tersedia di platform mereka, pada pertengahan 2021, mereka memiliki lebih dari 200 juta Pelanggan secara global. Dataset tabular ini terdiri dari daftar semua film dan acara tv yang tersedia di Netflix, bersama dengan detail seperti - pemeran, sutradara, peringkat, tahun rilis, durasi, dll. 
 
-Oleh karena itulah saya mengambil dataset ini untuk proyek akhir machine learning terapan menggunakan sistem rekomendasi.
-
 ### Business Understanding
 
 #### Problem Statements
@@ -50,7 +48,35 @@ Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris
 
 Data Loading sebagai berikut : 
 
-![image](https://user-images.githubusercontent.com/110523200/191248931-a6ac9c5f-9e47-41dd-b65d-52bf3eedeab3.png)
+![image](https://user-images.githubusercontent.com/110523200/191277484-591212d4-63c8-4f9c-a19e-f948b5c81b2a.png)
+
+| # |   Column   |  Non-Null  Count | Dtype   |                 
+|---|------------|------------------|---------|
+| 0 |show_id     |  8807 non-null   | object  |   
+| 1 |type        |  8807 non-null   | object  |   
+| 2 |title       |  8807 non-null   | object  |   
+| 3 |director    |  6173 non-null   | object  |   
+| 4 |cast        |  7982 non-null   | object  |   
+| 5 |country     |  7976 non-null   | object  |   
+| 6 |date_added  |  8797 non-null   | object  |   
+| 7 |release_year|  8807 non-null   | int64   |   
+| 8 |rating      |  8803 non-null   | object  |   
+| 9 |duration    |  8804 non-null   | object  |   
+|10 |listed_in   |  8807 non-null   | object  |   
+|11 |description |  8807 non-null   | object  |  
+
+![image](https://user-images.githubusercontent.com/110523200/191277583-4e1a81e0-de0b-4f6b-8962-7f80910ed329.png)
+
+|       | release_year |
+|-------|--------------|
+| count | 8807.000000  | 
+| mean  | 2014.180198  | 
+|  std  |    8.819312  | 
+|  min  | 1925.000000  | 
+|  25%  | 2013.000000  | 
+|  50%  | 2017.000000  |
+|  75%  | 2019.000000  | 
+|  max  | 2021.000000  | 
 
 Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memiliki 8807 entries. Dapat disimpulkan bahwa nilai rating bermacam-macam, yaitu: 
 
@@ -61,9 +87,20 @@ Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memili
 * PG : *Parental Guidance Suggested* yaitu perlu bimbingan orangtua
 * TV-14 : untuk kalangan berusia 14 keatas jika dibawah 14 tahun maka dalam pengawasan ketat orang tua
 
-Pada tahap ini, saya membersihkan data NaN. Jumlah NaN 4307 dari NaN yg ditemukan berdasarkan kolom :
+Jumlah NaN 4307 dari NaN yg ditemukan. Berikut jumlah NaN tiap Column :
 
-![image](https://user-images.githubusercontent.com/110523200/191249055-109fc2cc-da2c-4d76-81e3-cb2c005cacc3.png)
+|  show_id     | 0    |  
+|  type        | 0    |  
+|  title       | 0    |  
+|  director    | 2634 |
+|  cast        | 825  |
+| country      | 831  |
+| date_added   | 10   |
+| release_year | 0    |
+| rating       | 4    |
+| duration     | 3    |
+| listed_in    | 0    |
+| description  | 0    |
 
 Ini adalah informasi yang didapatkan dari hasil eksplorasi pada variabel netflix.
 
@@ -94,7 +131,15 @@ Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem re
 
 * Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil *binary*. Berikut outputnya :
         
-![image](https://user-images.githubusercontent.com/110523200/191249781-42ac3757-1b4b-4f38-a188-311b1968cef6.png)
+array ([
+
+        | 0.78087897, 0.76463429, 0.76159416, ...., 0.76159416, 0.76159416, 0.76463429 |,
+        | 0.76463429, 0.78087897, 0.76159416, ...., 0.76159416, 0.76159416, 0.78087897 |,
+        | 0.76159416, 0.76159416, 0.78087897, ...., 0.76159416, 0.77064199, 0.76159416 |,
+        | ....                                                                         |,
+        | 0.76159416, 0.76159416, 0.76159416, ...., 0.78087897, 0.76159416, 0.76159416 |,
+        | 0.76159416, 0.76159416, 0.77064199, ...., 0.76159416, 0.78087897, 0.76159416 |,
+        | 0.76463429, 0.78087897, 0.76159416, ...., 0.76159416, 0.76159416, 0.78087897 |])
 
 * Selanjutnya saya menggunakan *argpartition* untuk mengambil sejumlah nilai k tertinggi dari *similarity* data kemudian mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah.
 
