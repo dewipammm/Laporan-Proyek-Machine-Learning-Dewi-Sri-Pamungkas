@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning-Dewi Sri Pamungkas
+# Laporan Proyek Machine Learning - Dewi Sri Pamungkas
 
 ### Project Overview
 
@@ -91,7 +91,7 @@ Netflix Type "Movie" yang paling banyak dibandingkan Netflix Type "TV Show"
 
 Sebelum membuat model, perlunya melakukan pada data preparation adalah menduplikasi variabel dan juga text cleaning agar dapat memberikan hasil rekomendasi yang baik
 
-* Duplikasi variabel dataset melakukan duplikasi pada variabel netflix lalu data duplikasi ditampung pada variabel netflix_data sehingga dataset pada variabel netflix yang menampung dataset induk tidak terkontaminasi dan bisa digunakan kembali jika saya ingin mengembangkan model rekomendasi.
+* Melakukan duplikasi pada variabel netflix, fungsi yang saya gunakan adalah copy(). Lalu data duplikasi ditampung pada variabel netflix_data sehingga dataset pada variabel netflix yang menampung dataset induk tidak terkontaminasi dan bisa digunakan kembali jika saya ingin mengembangkan model rekomendasi.
 * *Text Cleaning* dilakukan pada kolom *title* untuk menghilangkan simbol atau teks yang tidak diperlukan dengan cara menggunakan teknik *Regex* agar membuat function yang bernama *text cleaning* dan mengaplikasikannya pada netflix_data.
 
 ### Modeling and Result
@@ -102,7 +102,7 @@ Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem re
 
 * Saya menggunakan TF-IDF Vectorizer untuk menemukan representasi fitur penting dari setiap rating netflix. Fungsi yang saya gunakan adalah tfidfvectorizer() dari library sklearn. Berikut sebagian outputnya :
 
-(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=fXLVQ_ZYx5S8&line=1&uniqifier=1)
+<https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=fXLVQ_ZYx5S8&line=1&uniqifier=1>
 
 * Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil binary. Berikut outputnya :
         
@@ -130,7 +130,7 @@ Untuk mengevaluasi model adalah menampung terlebih dahulu data netflix yang akan
 
 Dan langkah terakhir yang saya lakukan adalah membuat perulangan berdasarkan rating pada data uji coba dan melakukan implementasi dari formula precision. Berikut adalah hasil keluaran dari implementasi formula precision : 
 
-(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=nT_ELbAY6Ea8&line=1&uniqifier=1)
+![image](https://user-images.githubusercontent.com/110523200/191246646-4c9b5285-0a2c-4fc7-a268-50e4a48f4618.png)
 
 Output tersebut memberikan hasil yang cukup baik dan memiliki akurasi sebesar 100% sehingga dari sini saya bisa mengetahui bahwa model yang saya kembangkan berjalan sesuai yang diharapkan. 
  
