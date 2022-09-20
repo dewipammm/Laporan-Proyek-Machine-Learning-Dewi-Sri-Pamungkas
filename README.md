@@ -48,8 +48,6 @@ Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris
 
 Data Loading sebagai berikut : 
 
-![image](https://user-images.githubusercontent.com/110523200/191277484-591212d4-63c8-4f9c-a19e-f948b5c81b2a.png)
-
 | # |   Column   |  Non-Null  Count | Dtype   |                 
 |---|------------|------------------|---------|
 | 0 |show_id     |  8807 non-null   | object  |   
@@ -64,8 +62,6 @@ Data Loading sebagai berikut :
 | 9 |duration    |  8804 non-null   | object  |   
 |10 |listed_in   |  8807 non-null   | object  |   
 |11 |description |  8807 non-null   | object  |  
-
-![image](https://user-images.githubusercontent.com/110523200/191277583-4e1a81e0-de0b-4f6b-8962-7f80910ed329.png)
 
 |       | release_year |
 |-------|--------------|
@@ -89,18 +85,9 @@ Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memili
 
 Jumlah NaN 4307 dari NaN yg ditemukan. Berikut jumlah NaN tiap Column :
 
-|  show_id     | 0    |  
-|  type        | 0    |  
-|  title       | 0    |  
-|  director    | 2634 |
-|  cast        | 825  |
-| country      | 831  |
-| date_added   | 10   |
-| release_year | 0    |
-| rating       | 4    |
-| duration     | 3    |
-| listed_in    | 0    |
-| description  | 0    |
+| show_id | type | title | director | cast | country | date_added | release_year | rating | duration | listed_in | description |
+|---------|------|-------|----------|------|---------|------------|--------------|--------|----------|-----------|-------------|
+|    0    |  0   |   0   |   2634   | 825  |   831   |     10     |      0       |    4   |    3     |     0     |      0      |
 
 Ini adalah informasi yang didapatkan dari hasil eksplorasi pada variabel netflix.
 
@@ -127,19 +114,11 @@ Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem re
 
 * Saya menggunakan TF-IDF Vectorizer untuk menemukan representasi fitur penting dari setiap rating netflix. Fungsi yang saya gunakan adalah tfidfvectorizer() dari library sklearn. Berikut sebagian outputnya :
 
-![image](https://user-images.githubusercontent.com/110523200/191249618-9f749a40-a1c5-435f-a420-9029f8271819.png)
+|   7   |   8   |   9   |  12   |  24   | ... |  8801 | 8802 | 8804 | 8805 |  8806 |
+|-------|-------|-------|-------|-------|-----|-------|------|------|------|-------|
+| TV-MA | TV-14 | PG-13 | TV-MA | TV-14 | ... | TV-MA |  R   |  R   |  PG  | TV-14 | 
 
-* Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil *binary*. Berikut outputnya :
-        
-array ([
-
-        | 0.78087897, 0.76463429, 0.76159416, ...., 0.76159416, 0.76159416, 0.76463429 |,
-        | 0.76463429, 0.78087897, 0.76159416, ...., 0.76159416, 0.76159416, 0.78087897 |,
-        | 0.76159416, 0.76159416, 0.78087897, ...., 0.76159416, 0.77064199, 0.76159416 |,
-        | ....                                                                         |,
-        | 0.76159416, 0.76159416, 0.76159416, ...., 0.78087897, 0.76159416, 0.76159416 |,
-        | 0.76159416, 0.76159416, 0.77064199, ...., 0.76159416, 0.78087897, 0.76159416 |,
-        | 0.76463429, 0.78087897, 0.76159416, ...., 0.76159416, 0.76159416, 0.78087897 |])
+* Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil *binary*. 
 
 * Selanjutnya saya menggunakan *argpartition* untuk mengambil sejumlah nilai k tertinggi dari *similarity* data kemudian mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah.
 
