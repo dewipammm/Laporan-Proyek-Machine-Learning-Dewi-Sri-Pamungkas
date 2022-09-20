@@ -1,4 +1,4 @@
-# Laporan-Proyek-Machine-Learning-Dewi-Sri-Pamungkas
+# Laporan Proyek Machine Learning-Dewi Sri Pamungkas
 
 ### Project Overview
 
@@ -14,26 +14,27 @@ Oleh karena itulah saya mengambil dataset ini untuk proyek akhir machine learnin
 
 #### Problem Statements
 
-* Bagaimana cara membuat model Machine Learning untuk merekomendasikan judul Netflix kepada pengguna lain dengan teknik content-based filtering?
+* Bagaimana cara membuat model *Machine Learning* untuk merekomendasikan judul Netflix kepada pengguna lain dengan teknik *content-based filtering*?
+* Bagaimana mengetahui tingkat akurasi model menggunakan *Metrik Precision* berdasarkan hasil rekomendasi yang diberikan?
 
 #### Goals
 
-* Membuat model Machine Learning untuk menghasilkan sejumlah rekomendasi judul netflix kepada pengguna lain menggunakan teknik content-based filtering.
-* Mengetahui tingkat akurasi model menggunakan metric Precision berdasarkan hasil rekomendasi yang diberikan.
+* Membuat model *Machine Learning* untuk menghasilkan sejumlah rekomendasi judul netflix kepada pengguna lain menggunakan teknik *content-based filtering*.
+* Mengetahui tingkat akurasi model menggunakan *metric Precision* berdasarkan hasil rekomendasi yang diberikan.
 
 #### Solution Statements
 
-Untuk menyelesaikan masalah ini, saya menggunakan teknik content-based filtering. Berikut adalah penjelasan teknik yang akan digunakan untuk masalah ini :
+Untuk menyelesaikan masalah ini, saya menggunakan teknik *content-based filtering*. Berikut adalah penjelasan teknik yang akan digunakan untuk masalah ini :
 
-* Content-Based Filtering : Merupakan cara untuk memberi rekomendasi berdasarkan fitur pada item yang disukai oleh pengguna. Content-based filtering mempelajari profil minat pengguna baru berdasarkan data dari objek yang telah dinilai pengguna.
-* Kelebihan sistem rekomendasi dengan pendekatan content-based filtering memiliki kemampuan untuk merekomendasikan item (contoh: film, lagu, artikel dll) yang sifatnya baru bagi user, karena prinsip kerjanya yaitu dengan melihat diskripsi konten yang dikandung oleh item yang pernah diberi nilai rating tinggi sebelumnya oleh pengguna.
-* Kelemahan Content-Based Filtering sulit untuk menghasilkan rekomendasi yang tidak terduga, karena semua informasi dipilih dan direkomendasikan berdasarkan konten dan teknik ini tidak reliable (handal) tidak adanya ide, pendapat serta masukkan dari pengguna sebelumya yang sulit dianalis oleh komputer sehingga sulit untuk pengguna pemula memakai sistem ini secara efektif.
+* *Content-Based Filtering* : Merupakan cara untuk memberi rekomendasi berdasarkan fitur pada item yang disukai oleh pengguna. *Content-based filtering* mempelajari profil minat pengguna baru berdasarkan data dari objek yang telah dinilai pengguna.
+* Kelebihan sistem rekomendasi dengan pendekatan *content-based filtering* memiliki kemampuan untuk merekomendasikan item (contoh: film, lagu, artikel dll) yang sifatnya baru bagi user, karena prinsip kerjanya yaitu dengan melihat diskripsi konten yang dikandung oleh item yang pernah diberi nilai rating tinggi sebelumnya oleh pengguna.
+* Kelemahan *Content-Based Filtering* sulit untuk menghasilkan rekomendasi yang tidak terduga, karena semua informasi dipilih dan direkomendasikan berdasarkan konten dan teknik ini tidak *reliable* (handal) tidak adanya ide, pendapat serta masukkan dari pengguna sebelumya yang sulit dianalis oleh komputer sehingga sulit untuk pengguna pemula memakai sistem ini secara efektif.
 
 ### Data Understanding
 
-Dataset yang digunakan pada proyek ini diambil dari website kaggle dengan Netflix Movies and TV Shows.
+Dataset yang digunakan pada proyek ini diambil dari website *kaggle* dengan Netflix Movies and TV Shows.
 
-[https://www.kaggle.com/datasets/shivamb/netflix-shows]
+<https://www.kaggle.com/datasets/shivamb/netflix-shows>
 
 Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris dan 12 kolom. Adapun penjelasan dari masing-masing kolom dari dataset tersebut :
 * show_id : ID unik untuk setiap Film/Acara TV
@@ -47,6 +48,38 @@ Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris
 * rating : Peringkat TV dari film / acara
 * duration : Durasi Total dalam menit atau jumlah musim
 
+Data Loading sebagai berikut : 
+
+<https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=QPlA-z7Pdh0t&line=1&uniqifier=1>
+
+Berdasarkan output di atas, dapat diketahui bahwa file netflix_titles.csv memiliki 8807 entries. Dapat disimpulkan bahwa nilai rating bermacam-macam, yaitu: 
+
+* PG-13 : Orangtua perlu sangat berhati-hati, beberapa materi mungkin tak pantas untuk anak di bawah 13 tahun
+* TV-MA : Rating yang menunjukkan bahwa sebuah program ditujukan untuk orang dewasa
+* R : Anak-anak berusia di bawah 17 tahun membutuhkan pendampingan orangtua atau orang dewasa saat menyaksikannya
+* TV-Y7 : Untuk kalangan berusia 7-16 tahun
+* PG : Parental Guidance Suggested yaitu perlu bimbingan orangtua
+* TV-14 : untuk kalangan berusia 14 keatas jika dibawah 14 tahun maka dalam pengawasan ketat orang tua
+
+Pada tahap ini, saya membersihkan data NaN. Jumlah NaN 4307 dari NaN yg ditemukan berdasarkan kolom :
+
+jumlah NaN tiap Column
+show_id            0
+type               0
+title              0
+director        2634
+cast             825
+country          831
+date_added        10
+release_year       0
+rating             4
+duration           3
+listed_in          0
+description        0
+dtype: int64
+
+Ini adalah informasi yang didapatkan dari hasil eksplorasi pada variabel netflix.
+
 #### Visualization Data
 
 ![image](https://user-images.githubusercontent.com/110523200/191176144-e9bc0bc1-d2d5-42f5-9de7-72ac36209848.png)
@@ -59,11 +92,11 @@ Netflix Type "Movie" yang paling banyak dibandingkan Netflix Type "TV Show"
 Sebelum membuat model, perlunya melakukan pada data preparation adalah menduplikasi variabel dan juga text cleaning agar dapat memberikan hasil rekomendasi yang baik
 
 * Duplikasi variabel dataset melakukan duplikasi pada variabel netflix lalu data duplikasi ditampung pada variabel netflix_data sehingga dataset pada variabel netflix yang menampung dataset induk tidak terkontaminasi dan bisa digunakan kembali jika saya ingin mengembangkan model rekomendasi.
-* Text Cleaning melakukan text cleaning pada kolom title untuk menghilangkan simbol atau teks yang tidak diperlukan dengan cara menggunakan teknik Regex agar membuat function yang bernama text cleaning dan mengaplikasikannya pada netflix_data.
+* *Text Cleaning* dilakukan pada kolom *title* untuk menghilangkan simbol atau teks yang tidak diperlukan dengan cara menggunakan teknik *Regex* agar membuat function yang bernama *text cleaning* dan mengaplikasikannya pada netflix_data.
 
 ### Modeling and Result
 
-Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem rekomendasi Content Based Filtering. Karena dapat merekomendasikan pengguna berdasarkan konten rating yang didapat dari film. Jadi saya membuat acuannya berdasarkan rating.
+Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem rekomendasi *Content Based Filtering*. Karena dapat merekomendasikan pengguna berdasarkan konten rating yang didapat dari film. Jadi saya membuat acuannya berdasarkan rating.
 
 #### Content-based Filtering
 
