@@ -152,6 +152,11 @@ Berikut adalah rekomendasi yang diberikan oleh model yang telah dibuat :
 
 Model berhasil memberikan rekomendasi 10 judul netflix dengan rating yang serupa.
 
+Table data diatas menggunakan fungsi get_recomendation yang menampilkan rekomendasi 10 judul netflix sesuai dengan rating dan negara tempat film/acara itu diproduksi.
+* Pada kolom kedua merupakan judul dari Netflix itu sendiri salah satunya adalah "Safe House".
+* Pada kolom ketiga ada Rating dari judul netflix tersebut. Karena saya menggunakan rating sebagai sistem rekomendasi, maka yang keluar adalah judul netflix yang ratingnya sama.
+* Pada kolom keempat berisi negara tempat film/acara itu diproduksi.
+
 ### Evaluation
 
 Pada tahap ini, saya menggunakan metriks *precision*. *Precision* adalah sebuah metrics yang digunakan untuk mengukur berapa jumlah prediksi benar yang telah dibuat. Kelebihannya yaitu sangat baik untuk klasifikasi, dokumen yang dipilih secara acak dari kumpulan dokumen yang diambil adalah relevan, *precision* bagus untuk kasus di mana kelasnya seimbang. Namun kekurangan dari metrik *precision* ini yaitu tidak baik untuk data yang Imbalance dan hanya hasil teratas yang dikembalikan oleh sistem.
