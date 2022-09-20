@@ -79,6 +79,7 @@ Netflix Type "Movie" yang paling banyak dibandingkan Netflix Type "TV Show"
 Sebelum membuat model, perlunya melakukan pada data preparation adalah menduplikasi variabel dan juga text cleaning agar dapat memberikan hasil rekomendasi yang baik
 
 * Melakukan duplikasi pada variabel netflix, fungsi yang saya gunakan adalah copy(). Lalu data duplikasi ditampung pada variabel netflix_data sehingga dataset pada variabel netflix yang menampung dataset induk tidak terkontaminasi dan bisa digunakan kembali jika saya ingin mengembangkan model rekomendasi.
+* *Data Cleaning* dilakukan menggunakan fungsi data.isna().any() untuk mendeteksi adanya error atau corrupt pada data. Karena data memiliki NaN maka saya membuang data yang mempunyai NaN
 * *Text Cleaning* dilakukan pada kolom *title* untuk menghilangkan simbol atau teks yang tidak diperlukan dengan cara menggunakan teknik *Regex* agar membuat function yang bernama *text cleaning* dan mengaplikasikannya pada netflix_data.
 
 ### Modeling and Result
