@@ -47,4 +47,60 @@ Dataset yang dipakai adalah Netflix Movies and TV Shows yang memiliki 8807 baris
 * rating : Peringkat TV dari film / acara
 * duration : Durasi Total dalam menit atau jumlah musim
 
+#### Visualization Data
 
+![image](https://user-images.githubusercontent.com/110523200/191176144-e9bc0bc1-d2d5-42f5-9de7-72ac36209848.png)
+
+Insight yang saya dapatkan disni adalah:
+Netflix Type "Movie" yang paling banyak dibandingkan Netflix Type "TV Show"
+
+### Data Preparation
+
+Sebelum membuat model, perlunya melakukan pada data preparation adalah menduplikasi variabel dan juga text cleaning agar dapat memberikan hasil rekomendasi yang baik
+
+* Duplikasi variabel dataset melakukan duplikasi pada variabel netflix lalu data duplikasi ditampung pada variabel netflix_data sehingga dataset pada variabel netflix yang menampung dataset induk tidak terkontaminasi dan bisa digunakan kembali jika saya ingin mengembangkan model rekomendasi.
+* Text Cleaning melakukan text cleaning pada kolom title untuk menghilangkan simbol atau teks yang tidak diperlukan dengan cara menggunakan teknik Regex agar membuat function yang bernama text cleaning dan mengaplikasikannya pada netflix_data.
+
+### Modeling and Result
+
+Pada Proyek yang dibuat, tahapan modelling yang digunakan dalam teknik sistem rekomendasi Content Based Filtering. Karena dapat merekomendasikan pengguna berdasarkan konten rating yang didapat dari film. Jadi saya membuat acuannya berdasarkan rating.
+
+#### Content-based Filtering
+
+* Saya menggunakan TF-IDF Vectorizer untuk menemukan representasi fitur penting dari setiap rating netflix. Fungsi yang saya gunakan adalah tfidfvectorizer() dari library sklearn. Berikut sebagian outputnya :
+
+(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=fXLVQ_ZYx5S8&line=1&uniqifier=1)
+
+* Selanjutnya saya menetapkan 1 sebagai tanda judul netflix yang direkomendasikan dan 0 sebagai judul netflix yang tidak direkomendasikan. Dengan begitu saya menggunakan kernel sigmoid karena paling cocok untuk hasil binary. Berikut outputnya :
+        
+(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=Nw8yKJjqzJxc&line=1&uniqifier=1)
+
+* Selanjutnya saya menggunakan argpartition untuk mengambil sejumlah nilai k tertinggi dari similarity data kemudian mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah.
+
+Kemudian saya menguji akurasi dari sistem rekomendasi ini untuk menemukan rekomendasi netflix yang mirip dengan judul "A Cinderella Story". Berikut adalah detail informasi judul netflix "A Cinderella Story" :
+
+(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=vdUjh7bZ5vKi&line=1&uniqifier=1)
+
+Berdasarkan output di atas, dapat dilihat bahwa netflix dengan judul "A Cinderella Story" memiliki rating "PG" dengan negara asal United States, Canada. Rekomendasi yang diharapkan adalah judul netflix dengan rating yang serupa.
+
+Berikut adalah rekomendasi yang diberikan oleh model yang telah dibuat :
+
+(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=4CGhQO0_6Edu&line=1&uniqifier=1)
+
+Model berhasil memberikan rekomendasi 10 judul netflix dengan rating yang serupa.
+
+### Evaluation
+
+Pada tahap ini, saya menggunakan metriks precision. Precision Adalah sebuah metrics yang digunakan untuk mengukur berapa jumlah prediksi benar yang telah dibuat. Kelebihannya yaitu sangat baik untuk klasifikasi, dokumen yang dipilih secara acak dari kumpulan dokumen yang diambil adalah relevan, precision bagus untuk kasus di mana kelasnya seimbang. Namun kekurangan dari metrik precision ini yaitu tidak baik untuk data yang Imbalance dan hanya hasil teratas yang dikembalikan oleh sistem.
+
+Untuk mengevaluasi model adalah menampung terlebih dahulu data netflix yang akan menjadi data uji coba, dalam kasus ini saya mencoba untuk menampung data netflix yang mempunyai judul "A Cinderella Story" dan saya tampung pada variabel feature. Lalu selanjutnya saya menampung rating yang ada pada data uji coba untuk selanjutnya dipakai untuk evaluasi model.
+
+Dan langkah terakhir yang saya lakukan adalah membuat perulangan berdasarkan rating pada data uji coba dan melakukan implementasi dari formula precision. Berikut adalah hasil keluaran dari implementasi formula precision : 
+
+(https://colab.research.google.com/drive/1XmSn_LqZjT8ATgF6yy1YUan3aUYcpfH6#scrollTo=nT_ELbAY6Ea8&line=1&uniqifier=1)
+
+Output tersebut memberikan hasil yang cukup baik dan memiliki akurasi sebesar 100% sehingga dari sini saya bisa mengetahui bahwa model yang saya kembangkan berjalan sesuai yang diharapkan. 
+ 
+### Kesimpulan
+
+Saya sudah cukup paham bagaimana cara menyelesaikan proyek ini. Namun masih banyak pula hal yang perlu saya perbaiki dan pelajari agar saya paham sepenuhnya.
